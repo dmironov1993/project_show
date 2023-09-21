@@ -21,9 +21,6 @@ void Dither(const std::filesystem::path& input_file, const std::filesystem::path
         double dim02 = static_cast<double>(pixels.g);
         double dim03 = static_cast<double>(pixels.b);
         points.push_back({dim01, dim02, dim03});
-        // points.push_back({std::min(dim01, dim01 / 255.),
-        //                  std::min(dim02, dim02 / 255.),
-        //                  std::min(dim03, dim03 / 255.)});
     }
     KdTree tree{points};
 
