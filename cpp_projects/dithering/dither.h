@@ -44,18 +44,12 @@ void Dither(const std::filesystem::path& input_file, const std::filesystem::path
         double red = static_cast<double>(element.r);
         double green = static_cast<double>(element.g);
         double blue = static_cast<double>(element.b);
-        // ok_pixels_double.push_back({std::min(red, red / 255.),
-        //                            std::min(green, green / 255.),
-        //                            std::min(blue, blue / 255.)});
         ok_pixels_double.push_back({red, green, blue});
     }
 
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
             RGBdouble rgb = matrix[y][x];
-            // std::vector<double> oldpixel = {std::min(rgb.r, rgb.r / 255.),
-            //                                std::min(rgb.g, rgb.g / 255.),
-            //                                std::min(rgb.b, rgb.b / 255.)};
             std::vector<double> oldpixel = {rgb.r, rgb.g, rgb.b};
             int index = tree.GetNearest(oldpixel);
             RGBdouble newpixel = ok_pixels_double[index];
@@ -65,7 +59,6 @@ void Dither(const std::filesystem::path& input_file, const std::filesystem::path
                                                oldpixel[1] - matrix[y][x].g,
                                                oldpixel[2] - matrix[y][x].b};
 
-            // (x + 1, y)
             if (x + 1 < width) {
                 RGBdouble rgb01 = matrix[y][x + 1];
                 rgb01.r = rgb01.r + quant_error[0] * 7.0 / 16.;
@@ -74,7 +67,6 @@ void Dither(const std::filesystem::path& input_file, const std::filesystem::path
                 matrix[y][x + 1] = {rgb01.r, rgb01.g, rgb01.b};
             }
 
-            // (x + 1, y + 1)
             if (y + 1 < height && x + 1 < width) {
                 RGBdouble rgb04 = matrix[y + 1][x + 1];
                 rgb04.r = rgb04.r + quant_error[0] * 1.0 / 16.;
@@ -83,7 +75,6 @@ void Dither(const std::filesystem::path& input_file, const std::filesystem::path
                 matrix[y + 1][x + 1] = {rgb04.r, rgb04.g, rgb04.b};
             }
 
-            // (x, y + 1)
             if (y + 1 < height) {
                 RGBdouble rgb03 = matrix[y + 1][x];
                 rgb03.r = rgb03.r + quant_error[0] * 5.0 / 16.;
@@ -92,7 +83,6 @@ void Dither(const std::filesystem::path& input_file, const std::filesystem::path
                 matrix[y + 1][x] = {rgb03.r, rgb03.g, rgb03.b};
             }
 
-            // (x - 1, y + 1)
             if (y + 1 < height && x - 1 >= 0) {
                 RGBdouble rgb02 = matrix[y + 1][x - 1];
                 rgb02.r = rgb02.r + quant_error[0] * 3.0 / 16.;
