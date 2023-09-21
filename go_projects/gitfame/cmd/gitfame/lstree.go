@@ -5,9 +5,6 @@ import (
 	"strings"
 )
 
-// git ls-tree -r --name-only revision
-// outputs file names recursively by using a commit stored in 'revision'
-
 func LsTree(repository, revision string) {
 	args := []string{"ls-tree", "-r", "--name-only", revision}
 	cmd := exec.Command("git", args...)
