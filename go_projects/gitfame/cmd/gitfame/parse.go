@@ -64,7 +64,6 @@ var FlagOptions = map[string]FlagParameters{
 	},
 }
 
-// ParseArguments https://github.com/spf13/pflag/issues/195
 func ParseArguments() {
 	cmd := pflag.NewFlagSet("command", pflag.ExitOnError)
 
@@ -85,7 +84,6 @@ func ParseArguments() {
 		panic("MAIN: os.Args[1:] generates an error")
 	}
 
-	// parsed values in the task description order
 	repository, _ = cmd.GetString("repository")
 	revision, _ = cmd.GetString("revision")
 	orderby, _ = cmd.GetString("order-by")
