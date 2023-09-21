@@ -6,7 +6,6 @@ Bot::Bot(const std::string& api_endpoint) : bot_(std::make_unique<Client>(api_en
     std::ifstream last_update_id_file;
     last_update_id_file.open(
         "/home/denis/Desktop/denis.mironov7/bot/telegram/bot_last_update_id.txt");
-    // last_update_id_file.open("bot_last_update_id.txt");
     if (last_update_id_file.peek() != EOF) {
         last_update_id_file >> update_id;
     }
@@ -15,9 +14,6 @@ Bot::Bot(const std::string& api_endpoint) : bot_(std::make_unique<Client>(api_en
 
     bot_logfile_.open("/home/denis/Desktop/denis.mironov7/bot/telegram/bot_logfile.txt");
     bot_errorfile_.open("/home/denis/Desktop/denis.mironov7/bot/telegram/bot_errorfile.txt");
-
-    // bot_logfile_.open("bot_logfile.txt");
-    // bot_errorfile_.open("bot_errorfile.txt");
 }
 
 void Bot::Run() {
