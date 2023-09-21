@@ -350,7 +350,6 @@ std::string Client::HandleMessage(const Message& message) {
         std::ofstream last_update_id_file;
         last_update_id_file.open(
             "/home/denis/Desktop/denis.mironov7/bot/telegram/bot_last_update_id.txt");
-        // last_update_id_file.open("bot_last_update_id.txt");
         last_update_id_file << *message.GetUpdateId() + 1;
         last_update_id_file.close();
         return "/stop";
@@ -363,7 +362,6 @@ std::string Client::HandleMessage(const Message& message) {
         std::ofstream last_update_id_file;
         last_update_id_file.open(
             "/home/denis/Desktop/denis.mironov7/bot/telegram/bot_last_update_id.txt");
-        // last_update_id_file.open("bot_last_update_id.txt");
         last_update_id_file << *message.GetUpdateId() + 1;
         last_update_id_file.close();
         return "/crash";
