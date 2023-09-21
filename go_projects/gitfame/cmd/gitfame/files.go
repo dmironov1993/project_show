@@ -9,14 +9,6 @@ import (
 	"strings"
 )
 
-// ./gitframe/configs/language_extensions.json
-// https://www.sohamkamani.com/golang/json/
-
-// parsing (unmarshalling) language pure json file in json array
-// inputFiles contains file names parsed by LsTree
-// language flags are case-insensitive
-// outputFiles contains file names with extensions corresponding to a language
-
 type LanguageExtension struct {
 	Name       string
 	Type       string
