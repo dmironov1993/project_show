@@ -49,9 +49,6 @@ Client::Client(const std::string& api_token) : api_token_(api_token), uri_(api_t
     client_logfile_.open("/home/denis/Desktop/denis.mironov7/bot/telegram/client_logfile.txt");
     client_errorfile_.open("/home/denis/Desktop/denis.mironov7/bot/telegram/client_errorfile.txt");
 
-    // client_logfile_.open("client_logfile.txt");
-    // client_errorfile_.open("client_errorfile.txt");
-
     if (api_token_.substr(0, 5) == "https") {
         session_.reset(new Poco::Net::HTTPSClientSession());
         client_logfile_ << "CLIENT_CPP: Line = " + std::to_string(__LINE__) +
