@@ -7,10 +7,6 @@ import (
 	"strings"
 )
 
-// cmd := exec.Command("myCommand", "arg1", "arg2")
-// cmd.Dir = "/path/to/work/dir"
-// cmd.Run()
-
 func Log(repository, revision, fileName string) (hash string, author string) {
 	args := []string{"log", "--format=%H %an", revision, "--", fileName}
 	cmd := exec.Command("git", args...)
